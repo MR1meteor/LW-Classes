@@ -8,6 +8,13 @@ DisciplinesList::DisciplinesList()
 
 DisciplinesList::DisciplinesList(DisciplinesList& disciplines)
 {
+	if (disciplines.length == 0)
+	{
+		head = nullptr;
+		length = 0;
+		return;
+	}
+
 	DisciplineElement* el = disciplines.head;
 	DisciplineElement* copiedElement = new DisciplineElement{ el->Name, nullptr };
 	head = copiedElement;

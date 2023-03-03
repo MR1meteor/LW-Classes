@@ -8,6 +8,13 @@ StudentsList::StudentsList()
 
 StudentsList::StudentsList(StudentsList& students)
 {
+	if (students.length == 0)
+	{
+		head = nullptr; 
+		length = 0;
+		return;
+	}
+
 	StudentElement* el = students.head;
 	StudentElement* copiedElement = new StudentElement{ el->FIO, el->Discipline, nullptr };
 	head = copiedElement;
@@ -130,6 +137,13 @@ void StudentsList::PrintStudentsByDiscipline(string discipline)
 void StudentsList::PrintMostPopularDiscipline()
 {
 	StudentElement* el = head;
+
+	if (length == 0)
+	{
+		cout << "List is empty" << endl;
+		return;
+	}
+
 	string disciplines[100];
 	int disciplinesCounters[100] = { 0 };
 
