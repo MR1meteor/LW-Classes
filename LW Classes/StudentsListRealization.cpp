@@ -192,3 +192,39 @@ void StudentsList::PrintMostPopularDiscipline()
 }
 
 int StudentsList::GetLength() { return length; }
+
+bool StudentsList::operator== (const StudentsList& list)
+{
+	bool flag = true;
+
+	if (length != list.length)
+		return false;
+
+	StudentElement* firstEl = head;
+	StudentElement* secondEl = list.head;
+
+	while (firstEl != nullptr)
+	{
+		if (firstEl->FIO != secondEl->FIO ||
+			firstEl->Discipline != secondEl->Discipline)
+		{
+			flag = false;
+			break;
+		}
+
+		firstEl = firstEl->Next;
+		secondEl = secondEl->Next;
+	}
+
+	return flag;
+}
+
+bool StudentsList::operator> (const StudentsList& list)
+{
+	return length > list.length;
+}
+
+bool StudentsList::operator< (const StudentsList& list)
+{
+	return length < list.length;
+}

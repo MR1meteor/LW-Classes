@@ -19,6 +19,12 @@ public:
 
 	int GetLength();
 
+	bool operator== (const DisciplinesList& list);
+	bool operator> (const DisciplinesList& list);
+	bool operator< (const DisciplinesList& list);
+	DisciplinesList operator+ (const DisciplinesList& list);
+	DisciplinesList& operator= (const DisciplinesList& list);
+
 	friend ostream& operator << (ostream& os, const DisciplinesList& el)
 	{
 		DisciplineElement* currentElement = el.head;

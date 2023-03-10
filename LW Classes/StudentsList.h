@@ -22,6 +22,17 @@ public:
 
 	int GetLength();
 
+	bool operator== (const StudentsList& list);
+	bool operator> (const StudentsList& list);
+	bool operator< (const StudentsList& list);
+
+	/*
+	Перегрузку не сделать...
+
+	DisciplinesList operator+ (const DisciplinesList& list); 
+	DisciplinesList& operator= (const DisciplinesList& list);
+	*/
+
 	friend ostream& operator << (ostream& os, const StudentsList& el)
 	{
 		StudentElement* currentElement = el.head;

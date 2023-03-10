@@ -130,3 +130,66 @@ bool DisciplinesList::HasElement(string name)
 }
 
 int DisciplinesList::GetLength() { return length; }
+
+bool DisciplinesList::operator== (const DisciplinesList& list)
+{
+	bool flag = true;
+
+	if (length != list.length)
+		return false;
+
+	DisciplineElement* firstEl = head;
+	DisciplineElement* secondEl = list.head;
+
+	while(firstEl != nullptr)
+	{
+		if (firstEl->Name != secondEl->Name)
+		{
+			flag = false;
+			break;
+		}
+
+		firstEl = firstEl->Next;
+		secondEl = secondEl->Next;
+	}
+
+	return flag;
+}
+
+bool DisciplinesList::operator> (const DisciplinesList& list)
+{
+	return length > list.length;
+}
+
+bool DisciplinesList::operator< (const DisciplinesList& list)
+{
+	return length < list.length;
+}
+
+DisciplinesList DisciplinesList::operator+ (const DisciplinesList& list)
+{
+	DisciplinesList newList(*this);
+
+	DisciplineElement* metaEl = list.head;
+
+	while (metaEl != nullptr)
+	{
+		newList.AddElement(metaEl->Name);
+		metaEl = metaEl->Next;
+	}
+
+	return newList;
+}
+
+DisciplinesList& DisciplinesList::operator= (const DisciplinesList& list)
+{
+	DisciplineElement* metaEl = list.head;
+
+	while (metaEl != nullptr)
+	{
+		AddElement(metaEl->Name);
+		metaEl = metaEl->Next;
+	}
+
+	return *this;
+}
